@@ -4,11 +4,11 @@ from pages.base_page import BasePage
 
 
 class MainPageLocators:
-    LOCATOR_ENTER_BUTTON = (By.XPATH, '//span[text()="Войти"]')
-    LOCATOR_PERMANENT_PASSWORD_AUTH_CHOOSE_BUTTON = (By.XPATH, '//span[text()="С постоянным паролем"]')
-    LOCATOR_PERMANENT_PASSWORD_AUTH_LOGIN_FIELD = (By.NAME, 'login')
-    LOCATOR_PERMANENT_PASSWORD_AUTH_PASSWORD_FIELD = (By.NAME, 'password')
-    LOCATOR_PERMANENT_PASSWORD_AUTH_SUBMIT_BUTTON = (By.CLASS_NAME, 'd3jkWo')
+    LOCATOR_ENTER_BUTTON = (By.CSS_SELECTOR, '.MgQFWr.Ynb9Xm.mS4uL4')
+    LOCATOR_PERMANENT_PASSWORD_AUTH_CHOOSE_BUTTON = (By.CSS_SELECTOR, 'div.am0fm7>div>ul>li:nth-child(3)>button')
+    LOCATOR_PERMANENT_PASSWORD_AUTH_LOGIN_FIELD = (By.CSS_SELECTOR, '[placeholder="Логин"]')
+    LOCATOR_PERMANENT_PASSWORD_AUTH_PASSWORD_FIELD = (By.CSS_SELECTOR, '[placeholder="Пароль"]')
+    LOCATOR_PERMANENT_PASSWORD_AUTH_SUBMIT_BUTTON = (By.CSS_SELECTOR, '.d3jkWo')
 
 
 class MainPageAuth(BasePage):
