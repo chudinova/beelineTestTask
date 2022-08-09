@@ -1,9 +1,5 @@
-from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
-
-
-class IdentityPageLocators:
-    LOCATOR_WRONG_LOGIN_OR_PASSWORD_ERROR_MESSAGE = (By.CSS_SELECTOR, '[data-bind="validationMessage: password"]')
+from pages.locators import IdentityPageLocators
 
 
 class IdentityPageElementsFind(BasePage):
