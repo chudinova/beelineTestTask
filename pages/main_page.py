@@ -11,6 +11,9 @@ class MainPageAuth(BasePage):
     def enter_auth_menu(self):
         return self.find_element(MainPageLocators.LOCATOR_ENTER_BUTTON).click()
 
+    def login_dialog_modal_find(self):
+        return self.find_element(MainPageLocators.LOCATOR_LOGIN_DIALOG_MODAL)
+
     def auth_method_with_permanent_password_choose(self):
         return self.find_element(MainPageLocators.LOCATOR_PERMANENT_PASSWORD_AUTH_CHOOSE_BUTTON).click()
 
@@ -22,3 +25,6 @@ class MainPageAuth(BasePage):
 
     def auth_method_with_permanent_password_submit_button_click(self):
         return self.find_element(MainPageLocators.LOCATOR_PERMANENT_PASSWORD_AUTH_SUBMIT_BUTTON).click()
+
+    def is_password_hidden(self):
+        return self.find_element(MainPageLocators.LOCATOR_PERMANENT_PASSWORD_AUTH_PASSWORD_FIELD).get_attribute("type") == "password"
