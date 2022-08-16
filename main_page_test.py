@@ -1,10 +1,10 @@
-from pages.identity_page import IdentityPageElementsFind
-from pages.main_page import MainPageAuth
+from pages import IdentityPage
+from pages import MainPage
 
 
 def test_auth_with_permanent_password_and_random_credentials_fail(browser):
-    beeline_main_page = MainPageAuth(browser)
-    beeline_identity_page = IdentityPageElementsFind(browser)
+    beeline_main_page = MainPage(browser)
+    beeline_identity_page = IdentityPage(browser)
     beeline_main_page.go_to_site()
     beeline_main_page.enter_auth_menu()
 
