@@ -1,21 +1,23 @@
-from pages import IdentityPage
-from pages import MainPage
+from pages import BasePage
+from locators import MainPageLocators
+from locators import IdentityPageLocators
+from random import randint
 
 
 def test_auth_with_permanent_password_and_random_credentials_fail(browser):
-    beeline_main_page = MainPage(browser)
-    beeline_identity_page = IdentityPage(browser)
-    beeline_main_page.go_to_site()
-    beeline_main_page.enter_auth_menu()
+    beeline_page = BasePage(browser)
+    beeline_page.go_to_site("https://beeline.ru/")
+    beeline_page.click_element(MainPageLocators.LOCATOR_ENTER_BUTTON)
 
-    assert beeline_main_page.login_dialog_modal_find().is_displayed(), "Login dialog modal window is not displayed"
+    assert beeline_page.is_element_displayed(MainPageLocators.LOCATOR_LOGIN_DIALOG_MODAL), \
+        "Login dialog modal window is not displayed"
 
-    beeline_main_page.auth_method_with_permanent_password_choose()
-    beeline_main_page.auth_method_with_permanent_password_login_enter(beeline_main_page.ctn)
-    beeline_main_page.auth_method_with_permanent_password_password_enter(beeline_main_page.psw)
+    beeline_page.click_element(MainPageLocators.LOCATOR_PERMANENT_PASSWORD_AUTH_CHOOSE_BUTTON)
+    beeline_page.send_keys(MainPageLocators.LOCATOR_PERMANENT_PASSWORD_AUTH_LOGIN_FIELD, randint(9000000000, 9999999999))
+    beeline_page.send_keys(MainPageLocators.LOCATOR_PERMANENT_PASSWORD_AUTH_PASSWORD_FIELD, randint(000000, 999999))
 
-    assert beeline_main_page.is_password_hidden(), "Password is not hidden"
+    assert beeline_page.is_password_hidden(MainPageLocators.LOCATOR_PERMANENT_PASSWORD_AUTH_PASSWORD_FIELD), "Password is not hidden"
 
-    beeline_main_page.auth_method_with_permanent_password_submit_button_click()
+    beeline_page.click_element(MainPageLocators.LOCATOR_PERMANENT_PASSWORD_AUTH_SUBMIT_BUTTON)
 
-    assert beeline_identity_page.wrong_login_or_password_error_message().is_displayed(), "Login or password error is not displayed"
+    assert beeline_page.is_element_displayed(IdentityPageLocators.LOCATOR_WRONG_LOGIN_OR_PASSWORD_ERROR_MESSAGE), "Login or password error is not displayed"
