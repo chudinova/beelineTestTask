@@ -1,6 +1,6 @@
-from pages import BasePage
-from locators import MainPageLocators
-from locators import IdentityPageLocators
+from pages.pages import BasePage
+from locators.locators import MainPageLocators
+from locators.locators import IdentityPageLocators
 from random import randint
 
 
