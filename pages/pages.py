@@ -20,6 +20,9 @@ class BasePage:
     def is_element_displayed(self, locator):
         return self.find_element(locator).is_displayed()
 
+    def is_element_enabled(self, locator):
+        return self.find_element(locator).is_enabled()
+
     def send_keys(self, locator, keys):
         self.find_element(locator).send_keys(keys)
 
